@@ -1,14 +1,15 @@
 # Codex Design
 
-Три скилла для AI-агента, которые ведут страницу от идеи до зафиксированной дизайн-системы:
+Четыре скилла для AI-агента, которые ведут страницу от идеи до зафиксированной дизайн-системы:
 
 ```text
-design-grill  →  документ решений + прототип  →  design-art  →  референсы секций  →  код (например, image-to-code)  →  design-md  →  DESIGN.md
+design-grill  →  документ решений + прототип  →  design-cro  →  design-art  →  референсы секций  →  код (например, image-to-code)  →  design-md  →  DESIGN.md
 ```
 
 1. **design-grill** — договориться, что на странице и в каком порядке.
-2. **design-art** — решить, как это выглядит, и получить картинки секций, по которым можно верстать.
-3. **design-md** — снять с готовой страницы реальную дизайн-систему, убрать конфликты и записать `DESIGN.md`, по которому работают следующие агенты.
+2. **design-cro** — проверить, что страница ведёт посетителя к одному действию.
+3. **design-art** — решить, как это выглядит, и получить картинки секций, по которым можно верстать.
+4. **design-md** — снять с готовой страницы реальную дизайн-систему, убрать конфликты и записать `DESIGN.md`, по которому работают следующие агенты.
 
 ## design-grill
 
@@ -33,6 +34,10 @@ design-grill  →  документ решений + прототип  →  desi
 Если агент перестал слушать страницу, она скажет об этом. Напишите агенту в чат **грил** — он заберёт сохранённые ответы и продолжит.
 
 Нужен Node.js 20+, других зависимостей нет. Сервер слушает только `127.0.0.1` и ничего не отправляет наружу. Сессии хранятся в `~/.design-grill` (меняется переменной `GRILL_HOME`).
+
+## design-cro
+
+Проверяет конверсию страницы: понятна ли она за пять секунд, есть ли одно главное действие, стоят ли доказательства рядом с обещаниями, отвечены ли возражения, где трение. Работает в двух режимах: по раскладке блоков до визуала (например, по документу из design-grill) и по готовой странице, скриншоту или ссылке. Итог — главная проблема, быстрые правки, сильные изменения, гипотезы для теста и варианты заголовка и кнопки. Файлы не меняет, пока не попросите.
 
 ## design-art
 
@@ -71,15 +76,17 @@ Codex:
 ```sh
 git clone https://github.com/harnessmachine/codex-design ~/codex-design
 ln -s ~/codex-design/design-grill ~/.codex/skills/design-grill
+ln -s ~/codex-design/design-cro ~/.codex/skills/design-cro
 ln -s ~/codex-design/design-art ~/.codex/skills/design-art
 ln -s ~/codex-design/design-md ~/.codex/skills/design-md
 ```
 
-Claude Code (design-grill и design-md):
+Claude Code (design-grill, design-cro и design-md):
 
 ```sh
 git clone https://github.com/harnessmachine/codex-design ~/codex-design
 ln -s ~/codex-design/design-grill ~/.claude/skills/design-grill
+ln -s ~/codex-design/design-cro ~/.claude/skills/design-cro
 ln -s ~/codex-design/design-md ~/.claude/skills/design-md
 ```
 

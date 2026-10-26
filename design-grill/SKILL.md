@@ -454,7 +454,8 @@ On a `finish` action, or when the user says finish in the terminal:
 4. Once there is no draw in flight and the exports are complete, stop the persistent
    Monitor with TaskStop, or stop the server as described in Wait mode.
 5. Print one line with the doc path (and the visual's).
-6. Offer the next step in one line, in the user's language: if a `design-art` skill is
+6. Offer the next step in one line, in the user's language. For a page that should convert
+   (landing, sign-up, pricing), first offer `design-cro` in structure mode on the doc. Then, if a `design-art` skill is
    installed, propose running it with the design doc (and the exported visual, if any) as
    the brief to make the first visual reference of the page, e.g. «Грил готов. Запустить
    design-art и сделать первый референс по этому документу?». Do not start it unasked.
