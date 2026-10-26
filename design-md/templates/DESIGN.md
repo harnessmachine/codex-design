@@ -37,6 +37,16 @@ spacing:
   xl: <px>
   container: <px>
 components:
+  page:
+    backgroundColor: "{colors.surface}"
+    textColor: "{colors.on-surface}"
+    typography: "{typography.body-md}"
+  caption:
+    textColor: "{colors.muted}"
+    typography: "{typography.label-md}"
+  divider:
+    backgroundColor: "{colors.line}"
+    height: 1px
   button-primary:
     backgroundColor: "{colors.primary}"
     textColor: "{colors.surface}"

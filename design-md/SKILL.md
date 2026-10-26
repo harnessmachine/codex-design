@@ -71,7 +71,7 @@ Refresh: keep the owner's prose, update tokens and Provenance, and list what cha
 npx @google/design.md lint DESIGN.md
 ```
 
-Fix every error (broken references, duplicate keys, section order). Warnings such as contrast or orphaned tokens either get fixed or explained in Open questions. If `npx` is unavailable, say the lint was not run.
+Fix every error (broken references, duplicate keys, section order). Warnings such as contrast or orphaned tokens either get fixed or explained in Open questions. `orphaned-tokens` means no component references that token: base colors (surface, text, muted, line) are usually used by `page`, `caption`, `divider`-style components — add the real one where it exists on the page instead of deleting the token. If `npx` is unavailable, say the lint was not run.
 
 ### 8. Handoff
 
