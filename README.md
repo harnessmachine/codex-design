@@ -1,13 +1,14 @@
 # Codex Design
 
-Два скилла для AI-агента, которые ведут страницу от идеи до визуального референса:
+Три скилла для AI-агента, которые ведут страницу от идеи до зафиксированной дизайн-системы:
 
 ```text
-design-grill  →  docs/<тема>-design.md + прототип  →  design-art  →  референсы секций  →  код (например, image-to-code)
+design-grill  →  документ решений + прототип  →  design-art  →  референсы секций  →  код (например, image-to-code)  →  design-md  →  DESIGN.md
 ```
 
 1. **design-grill** — договориться, что на странице и в каком порядке.
 2. **design-art** — решить, как это выглядит, и получить картинки секций, по которым можно верстать.
+3. **design-md** — снять с готовой страницы реальную дизайн-систему, убрать конфликты и записать `DESIGN.md`, по которому работают следующие агенты.
 
 ## design-grill
 
@@ -47,6 +48,22 @@ design-grill  →  docs/<тема>-design.md + прототип  →  design-art
 
 Сделан под Codex: нужны встроенная генерация изображений и субагенты.
 
+## design-md
+
+Фиксирует готовый фронтенд в `DESIGN.md` — файл, который агенты читают перед любой правкой интерфейса. Формат — открытый [DESIGN.md от Google Labs](https://github.com/google-labs-code/design.md): токены в YAML плюс короткие объяснения.
+
+Главное — сначала конфликты, потом файл. Скилл открывает страницу на ширинах 375, 768 и 1280 px, снимает то, что браузер реально рисует, и показывает несостыковки:
+
+- контраст текста ниже WCAG AA;
+- почти одинаковые размеры шрифта (15 и 16 px), дробные размеры, слишком тесный или разреженный межстрочный интервал;
+- почти одинаковые цвета;
+- отступы и радиусы вне сетки 4 px;
+- лишние шрифты, начертания, тени; список контейнеров и брейкпоинтов.
+
+По каждому пункту вы решаете: объединить, оставить как исключение или исправить в коде. Только после этого пишется `DESIGN.md`: токены с ролями, компоненты с состояниями, «делай / не делай» из ваших решений, откуда взяты значения и открытые вопросы. В конце файл проверяется линтером `npx @google/design.md lint`.
+
+Инструменты в `design-md/scripts/`: `collect.js` (запускается в любом браузере на странице), `collect-playwright.mjs` (то же через Playwright проекта, сразу на трёх ширинах), `analyze.mjs` (Node без зависимостей, пишет отчёт о конфликтах).
+
 ## Установка
 
 Codex:
@@ -55,17 +72,19 @@ Codex:
 git clone https://github.com/harnessmachine/codex-design ~/codex-design
 ln -s ~/codex-design/design-grill ~/.codex/skills/design-grill
 ln -s ~/codex-design/design-art ~/.codex/skills/design-art
+ln -s ~/codex-design/design-md ~/.codex/skills/design-md
 ```
 
-Claude Code (design-grill):
+Claude Code (design-grill и design-md):
 
 ```sh
 git clone https://github.com/harnessmachine/codex-design ~/codex-design
 ln -s ~/codex-design/design-grill ~/.claude/skills/design-grill
+ln -s ~/codex-design/design-md ~/.claude/skills/design-md
 ```
 
 Обновление: `git -C ~/codex-design pull`.
 
 ## Лицензия
 
-MIT. См. `LICENSE` и `design-grill/LICENSE`.
+MIT. См. `LICENSE` и `design-grill/LICENSE`. Формат DESIGN.md — спецификация Google Labs (Apache-2.0); здесь только ссылки на неё и краткое изложение своими словами.
