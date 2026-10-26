@@ -1,6 +1,6 @@
 # Visual brief
 
-You are drawing the **visual** for a grill-ui design interview: one HTML file showing
+You are drawing the **visual** for a design-grill design interview: one HTML file showing
 the design as it stands. Use the session folder, kind (prototype or diagram), project root,
 and change list from the interview context or the interviewer's brief. Drawing mode is
 defined in [Subagent or inline](SKILL.md#subagent-or-inline). This file holds the artifact

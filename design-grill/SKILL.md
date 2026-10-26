@@ -1,9 +1,9 @@
 ---
-name: grill-ui
-description: "Grill UI — грил на локальной странице в браузере вместо терминала: вопросы раундами, варианты с советом, обсуждение каждого вопроса, одна кнопка «Отправить». Use when the user says \"grill ui\", \"грил ui\", \"загриль в браузере\", invokes /grill-ui with a topic, or says \"/grill-ui resume\", or types \"грил\" while a grill is open (resume). Write every question, option, recommendation, thread reply and the final doc in the user's language (Russian by default)."
+name: design-grill
+description: "Design Grill — грил на локальной странице в браузере вместо терминала: вопросы раундами, варианты с советом, обсуждение каждого вопроса, одна кнопка «Отправить». Use when the user says \"design grill\", \"дизайн-грил\", \"загриль в браузере\", invokes /design-grill with a topic, or says \"/design-grill resume\", or types \"грил\" while a grill is open (resume). Write every question, option, recommendation, thread reply and the final doc in the user's language (Russian by default)."
 ---
 
-# Grill UI
+# Design Grill
 
 ## Rule zero: you stay listening until Finish
 
@@ -117,7 +117,7 @@ node $SKILL/server.mjs patch --session <session> <<'GRILL_PATCH'
 GRILL_PATCH
 ```
 
-## Start (`/grill-ui <topic>`, `$grill-ui <topic>`, or "grill ui: <topic>")
+## Start (`/design-grill <topic>`, `$design-grill <topic>`, or "design grill: <topic>")
 
 1. From the project directory run
    `node $SKILL/server.mjs new --topic "<topic>" --intent "<why this grill exists, 1-2 sentences>" --doc "<doc path>"`.
@@ -151,7 +151,7 @@ GRILL_PATCH
    token included, since the second machine must open that full address), how many questions wait, and the doc path (say the user can change
    the path by typing in the terminal). Return to listening.
 
-## Resume (`/grill-ui resume`, or the user types «грил» / «grill» / «дальше» while a grill is open)
+## Resume (`/design-grill resume`, or the user types «грил» / «grill» / «дальше» while a grill is open)
 
 1. From the project directory run `node $SKILL/server.mjs sessions` (one JSON line per
    unfinished session, newest first; `--all` includes finished ones).
@@ -329,7 +329,7 @@ keeps answering and sending while the subagent draws.
    and you get a completion notice later), general-purpose type, prompt filled in from this
    template (use the absolute path of `$SKILL`):
 
-   > Draw the visual for a grill-ui design interview. Read `$SKILL/visual-brief.md`
+   > Draw the visual for a design-grill design interview. Read `$SKILL/visual-brief.md`
    > first and follow it exactly. Session folder: `<session>`. Project root: `<project>`.
    > Kind: **prototype** | **diagram**.
    > Context: **change to an existing app**, landing in `<route, page, or component>`;
@@ -454,11 +454,11 @@ On a `finish` action, or when the user says finish in the terminal:
 4. Once there is no draw in flight and the exports are complete, stop the persistent
    Monitor with TaskStop, or stop the server as described in Wait mode.
 5. Print one line with the doc path (and the visual's).
-6. Offer the next step in one line, in the user's language: if a `machine-art` skill is
+6. Offer the next step in one line, in the user's language: if a `design-art` skill is
    installed, propose running it with the design doc (and the exported visual, if any) as
    the brief to make the first visual reference of the page, e.g. «Грил готов. Запустить
-   machine-art и сделать первый референс по этому документу?». Do not start it unasked.
-   Without `machine-art`, offer the same with whatever image or design skill the user has,
+   design-art и сделать первый референс по этому документу?». Do not start it unasked.
+   Without `design-art`, offer the same with whatever image or design skill the user has,
    or skip this step. End.
 
 ## Wait mode (agents without a Monitor tool)

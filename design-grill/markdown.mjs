@@ -1,4 +1,4 @@
-// Minimal markdown renderer for grill-ui.
+// Minimal markdown renderer for design-grill.
 // Zero dependencies, no build step. Escape first, then add safe tags.
 // This module is the testable seam. page.html inlines the same function.
 export function esc(s) {

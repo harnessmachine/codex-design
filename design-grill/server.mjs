@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// grill-ui server. Plain Node, no dependencies, no build step.
+// design-grill server. Plain Node, no dependencies, no build step.
 //
 //   new      --topic T [--intent I] [--doc P]         create a session folder under GRILL_HOME, print {session,key,project,id,doc,intent}
 //   serve    --session DIR [--port N] [--host ADDR | --lan] [--open | --open-command P] [--detach]
@@ -34,7 +34,7 @@ import { fileURLToPath } from "node:url";
 
 const SELF = fileURLToPath(import.meta.url);
 const HERE = path.dirname(SELF);
-const HOME = process.env.GRILL_HOME || path.join(os.homedir(), ".grill-ui");
+const HOME = process.env.GRILL_HOME || path.join(os.homedir(), ".design-grill");
 // ui.json is global, not per session: the theme must survive a new grill on a new port.
 const THEMES = ["system", "light", "dark"];
 const uiFile = path.join(HOME, "ui.json");

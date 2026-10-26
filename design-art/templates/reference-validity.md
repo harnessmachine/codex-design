@@ -1,0 +1,21 @@
+# Reference Validity
+
+- Reference:
+- Dimensions:
+- Prompt:
+- Grid:
+- DESIGN.md / design-context seed:
+- Production-page validity:
+- Buildability:
+- Grid clarity:
+- Type readability:
+- Component reuse:
+- Asset separability:
+- Product coherence:
+- Creative value:
+- No poster failure:
+- Long-page crop package:
+- Crop coverage:
+- Crop manifest:
+- Decision:
+- Notes:
